@@ -1,4 +1,26 @@
 $(document).ready(function() {
+    function showSocialNetworkingZuck() {
+	const url = chrome.extension.getURL('jesse.small.png');
+	$('body').prepend('<img id="social-networking" src="' + url + '" />');
+    }
+
+    const events = [
+	{
+	    keyword: 'domain',
+	    action: showSocialNetworkingZuck
+	}
+    ];
+
+    function scanPageForKeywords() {
+	$('p').each(function() {
+	    events.forEach(e => {
+		if ($(this).text().indexOf(e.keyword) !== -1) {
+		    e.action();
+		}
+	    });
+	});
+    }
+
     console.log('jquery is ready');
-    $('body').prepend('<img id="social-networking" src="' + chrome.extension.getURL('jesse.small.png') + '" />');
+    scanPageForKeywords();
 });
