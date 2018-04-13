@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     const events = [
 	{
-	    keyword: 'domain',
+	    keyword: 'social networking',
 	    action: showSocialNetworkingZuck
 	}
     ];
@@ -14,7 +14,8 @@ $(document).ready(function() {
     function scanPageForKeywords() {
 	$('p').each(function() {
 	    events.forEach(e => {
-		if ($(this).text().indexOf(e.keyword) !== -1) {
+		const text = $(this).text().toLowerCase();
+		if (text.indexOf(e.keyword) !== -1) {
 		    e.action();
 		}
 	    });
