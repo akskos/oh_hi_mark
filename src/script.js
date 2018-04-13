@@ -13,14 +13,20 @@ $(document).ready(function() {
 	}
     ];
 
+    function fireEvents(element) {
+	events.forEach(e => {
+	    const text = element.text().toLowerCase();
+	    if (text.indexOf(e.keyword) !== -1) {
+		e.action();
+		return;
+	    }
+	});
+    }
+
     function scanPageForKeywords() {
-	$('p').each(function() {
-	    events.forEach(e => {
-		const text = $(this).text().toLowerCase();
-		if (text.indexOf(e.keyword) !== -1) {
-		    e.action();
-		}
-	    });
+	let textElements = $.merge($('p'), $(':header'));
+	textElements.each(function() {
+	    fireEvents($(this));
 	});
     }
 
