@@ -17,6 +17,15 @@ $(document).ready(function() {
     function hideDrinkingZuck() {
 	$('img#drinking-zuck').fadeOut(500);
     }
+    function showBasicZuck() {
+	const url = chrome.extension.getURL('zucc.png');
+	$('body').prepend('<img class="corner-zuck" id="basic-zuck" src="' + url + '" />');
+	$('img#basic-zuck').hide();
+	$('img#basic-zuck').fadeIn(500);
+    }
+    function hideBasicZuck() {
+	$('img#basic-zuck').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -30,6 +39,12 @@ $(document).ready(function() {
 	    action: showDrinkingZuck,
 	    active: false,
 	    deactivate: hideDrinkingZuck
+	},
+	{
+	    keyword: '',
+	    action: showBasicZuck,
+	    active: false,
+	    deactivate: hideBasicZuck
 	}
     ];
 
