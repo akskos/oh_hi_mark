@@ -5,5 +5,5 @@ img#social-networking {
     display: block;
     opacity: 1;
     box-sizing: none;
-    z-index: 100;
+    z-index: 100000;
 }
