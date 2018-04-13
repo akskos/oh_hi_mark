@@ -1,1 +1,3 @@
-console.log('I AM A SCRIPTTTTTT');
+$(document).ready(function() {
+    console.log('jquery is ready');
+});
