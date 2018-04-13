@@ -1,8 +1,9 @@
 {
     "name": "Getting Started Example",
-    "version": "1.0",
+    "version": "0.0.1",
     "description": "Build an Extension!",
     "manifest_version": 2,
+    "permissions": ["storage"],
     "browser_action": {
 	"default_popup": "hello.html"
     },
@@ -14,5 +15,9 @@
 	    },
 	    "description": "Opens hello.html"
 	}
-    }
+    },
+    "content_scripts": [{
+	"matches": ["http://*/*", "https://*/*"],
+	"js": ["script.js"]
+    }]
 }
