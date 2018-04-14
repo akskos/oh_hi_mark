@@ -49,6 +49,15 @@ $(document).ready(function() {
     function hideRofl() {
 	$('img#rofl').fadeOut(500);
     }
+    function showThicc() {
+	const url = chrome.extension.getURL('thicc.small.png');
+	$('body').prepend('<img class="corner-zuck" id="thicc" src="' + url + '" />');
+	$('img#thicc').hide();
+	$('img#thicc').fadeIn(500);
+    }
+    function hideThicc() {
+	$('img#thicc').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -56,6 +65,12 @@ $(document).ready(function() {
 	    action: showWater,
 	    active: false,
 	    deactivate: hideWater
+	},
+	{
+	    keyword: 'nudes',
+	    action: showThicc,
+	    active: false,
+	    deactivate: hideThicc
 	},
 	{
 	    keyword: 'rofl',
