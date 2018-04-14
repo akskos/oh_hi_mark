@@ -31,8 +31,23 @@ $(document).ready(function() {
 	$('img#basic-zuck').fadeOut(500);
 	$('img#zucks-eyes').fadeOut(500);
     }
+    function showWater() {
+	const url = chrome.extension.getURL('water.small.png');
+	$('body').prepend('<img class="corner-zuck" id="water" src="' + url + '" />');
+	$('img#water').hide();
+	$('img#water').fadeIn(500);
+    }
+    function hideWater() {
+	$('img#water').fadeOut(500);
+    }
 
     const events = [
+	{
+	    keyword: 'water',
+	    action: showWater,
+	    active: false,
+	    deactivate: hideWater
+	},
 	{
 	    keyword: 'social networking',
 	    action: showSocialNetworkingZuck,
@@ -46,11 +61,11 @@ $(document).ready(function() {
 	    deactivate: hideDrinkingZuck
 	},
 	{
-	    keyword: '',
+	    keyword: 'mark zuckerberg',
 	    action: showBasicZuck,
 	    active: false,
 	    deactivate: hideBasicZuck
-	}
+	},
     ];
 
     function getDeactivationFunctions() {
@@ -64,6 +79,15 @@ $(document).ready(function() {
 	    }
 	});
 	return funcs;
+    }
+
+    function zeroActiveEvents() {
+	for (let i = 0; i < events.length; i++) {
+	    if (events[i].active) {
+		return false;
+	    }
+	}
+	return true;
     }
 
     function fireEvents(textElements) {
@@ -109,7 +133,11 @@ $(document).ready(function() {
 	    o.ev.action();
 	    o.ev.active = true;
 	}
-
+	if (zeroActiveEvents()) {
+	    const defaultEvent = events[events.length-1];
+	    defaultEvent.active = true;	    
+	    defaultEvent.action();	    
+	}
     }
 
     function scanPageForKeywords() {
