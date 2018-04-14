@@ -115,9 +115,6 @@ $(document).ready(function() {
     function scanPageForKeywords() {
 	let textElements = $.merge($('p'), $(':header'));
 	fireEvents(textElements);
-	//textElements.each(function() {
-	//    return fireEvents($(this));
-	//});
     }
 
     function scanLoop() {
@@ -126,6 +123,15 @@ $(document).ready(function() {
 	    scanLoop();
 	}, 40);
     }
+
+    window.addEventListener('mousemove', (e) => {
+	const screenWidth = $(window).width();
+	const screenHeight = $(window).height();
+	const right = ((screenWidth - e.screenX) / screenWidth) * 7;
+	const bottom = ((screenHeight - e.screenY) / screenHeight) * 4;
+	$('img#zucks-eyes').css('right', right);
+	$('img#zucks-eyes').css('bottom', bottom);
+    });
 
     scanLoop();
 });
