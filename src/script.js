@@ -117,6 +117,20 @@ $(document).ready(function() {
 	$('img#fakenews').fadeOut(500);
 	$('img#zucks-eyes').fadeOut(500);
     }
+    function showWebcam() {
+	const url = chrome.extension.getURL('webcam.small.png');
+	const eyes = chrome.extension.getURL('eyes.small.png');
+	$('body').prepend('<img class="corner-zuck" id="zucks-eyes" src="' + eyes + '" />');
+	$('body').prepend('<img class="corner-zuck" id="webcam" src="' + url + '" />');
+	$('img#webcam').hide();
+	$('img#zucks-eyes').hide();
+	$('img#webcam').fadeIn(500);
+	$('img#zucks-eyes').fadeIn(500);
+    }
+    function hideWebcam() {
+	$('img#webcam').fadeOut(500);
+	$('img#zucks-eyes').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -124,6 +138,12 @@ $(document).ready(function() {
 	    action: showWater,
 	    active: false,
 	    deactivate: hideWater
+	},
+	{
+	    keyword: 'webcam',
+	    action: showWebcam,
+	    active: false,
+	    deactivate: hideWebcam
 	},
 	{
 	    keyword: 'cambridge analytica',

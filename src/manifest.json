@@ -22,5 +22,5 @@
 	"css": ["style.css"],
 	"run_at": "document_start"
     }],
-    "web_accessible_resources": ["jesse.small.png", "drinking.gif", "zucc.small.png", "eyes.small.png", "water.small.png", "rofl.small.png", "thicc.small.png", "dad.small.png", "loveyou.small.png", "heart-eyes.small.png", "long_neck.small.png", "liz-zuck.small.gif", "smile.gif", "fake_news.small.png"] 
+    "web_accessible_resources": ["jesse.small.png", "drinking.gif", "zucc.small.png", "eyes.small.png", "water.small.png", "rofl.small.png", "thicc.small.png", "dad.small.png", "loveyou.small.png", "heart-eyes.small.png", "long_neck.small.png", "liz-zuck.small.gif", "smile.gif", "fake_news.small.png", "webcam.small.png"] 
 }
