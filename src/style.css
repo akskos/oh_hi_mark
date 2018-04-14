@@ -6,4 +6,5 @@ img.corner-zuck {
     opacity: 1;
     box-sizing: none;
     z-index: 100000 !important;
+    width: 250px;
 }

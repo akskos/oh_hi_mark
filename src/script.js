@@ -76,6 +76,47 @@ $(document).ready(function() {
     function hideLove() {
 	$('img#loveyou').fadeOut(500);
     }
+    function showFb() {
+	const url = chrome.extension.getURL('heart-eyes.small.png');
+	$('body').prepend('<img class="corner-zuck" id="fb" src="' + url + '" />');
+	$('img#fb').hide();
+	$('img#fb').fadeIn(500);
+    }
+    function hideFb() {
+	$('img#fb').fadeOut(500);
+    }
+    function showStupid() {
+	const url = chrome.extension.getURL('long_neck.small.png');
+	$('body').prepend('<img class="corner-zuck" id="stupid" src="' + url + '" />');
+	$('img#stupid').hide();
+	$('img#stupid').fadeIn(500);
+    }
+    function hideStupid() {
+	$('img#stupid').fadeOut(500);
+    }
+    function showSmile() {
+	const url = chrome.extension.getURL('smile.gif');
+	$('body').prepend('<img class="corner-zuck" id="smile" src="' + url + '" />');
+	$('img#smile').hide();
+	$('img#smile').fadeIn(500);
+    }
+    function hideSmile() {
+	$('img#smile').fadeOut(500);
+    }
+    function showFakeNews() {
+	const url = chrome.extension.getURL('fake_news.small.png');
+	const eyes = chrome.extension.getURL('eyes.small.png');
+	$('body').prepend('<img class="corner-zuck" id="zucks-eyes" src="' + eyes + '" />');
+	$('body').prepend('<img class="corner-zuck" id="fakenews" src="' + url + '" />');
+	$('img#fakenews').hide();
+	$('img#zucks-eyes').hide();
+	$('img#fakenews').fadeIn(500);
+	$('img#zucks-eyes').fadeIn(500);
+    }
+    function hideFakeNews() {
+	$('img#fakenews').fadeOut(500);
+	$('img#zucks-eyes').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -83,6 +124,30 @@ $(document).ready(function() {
 	    action: showWater,
 	    active: false,
 	    deactivate: hideWater
+	},
+	{
+	    keyword: 'cambridge analytica',
+	    action: showFakeNews,
+	    active: false,
+	    deactivate: showFakeNews
+	},
+	{
+	    keyword: 'lol',
+	    action: showSmile,
+	    active: false,
+	    deactivate: hideSmile
+	},
+	{
+	    keyword: 'stupid hack',
+	    action: showStupid,
+	    active: false,
+	    deactivate: hideStupid
+	},
+	{
+	    keyword: 'data',
+	    action: showFb,
+	    active: false,
+	    deactivate: hideFb
 	},
 	{
 	    keyword: 'i love you',
