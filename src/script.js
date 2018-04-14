@@ -40,6 +40,15 @@ $(document).ready(function() {
     function hideWater() {
 	$('img#water').fadeOut(500);
     }
+    function showRofl() {
+	const url = chrome.extension.getURL('rofl.small.png');
+	$('body').prepend('<img class="corner-zuck" id="rofl" src="' + url + '" />');
+	$('img#rofl').hide();
+	$('img#rofl').fadeIn(500);
+    }
+    function hideRofl() {
+	$('img#rofl').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -49,7 +58,13 @@ $(document).ready(function() {
 	    deactivate: hideWater
 	},
 	{
-	    keyword: 'social networking',
+	    keyword: 'rofl',
+	    action: showRofl,
+	    active: false,
+	    deactivate: hideRofl
+	},
+	{
+	    keyword: 'network',
 	    action: showSocialNetworkingZuck,
 	    active: false,
 	    deactivate: hideSocialNetworkingZuck
@@ -142,6 +157,7 @@ $(document).ready(function() {
 
     function scanPageForKeywords() {
 	let textElements = $.merge($('p'), $(':header'));
+	textElements = $.merge(textElements, $('a'));
 	fireEvents(textElements);
     }
 
