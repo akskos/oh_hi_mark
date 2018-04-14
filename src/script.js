@@ -106,7 +106,7 @@ $(document).ready(function() {
 	    deactivate: hideDrinkingZuck
 	},
 	{
-	    keyword: 'mark zuckerberg',
+	    keyword: 'zuckerberg',
 	    action: showBasicZuck,
 	    active: false,
 	    deactivate: hideBasicZuck
