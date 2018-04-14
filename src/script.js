@@ -58,6 +58,15 @@ $(document).ready(function() {
     function hideThicc() {
 	$('img#thicc').fadeOut(500);
     }
+    function showDad() {
+	const url = chrome.extension.getURL('dad.small.png');
+	$('body').prepend('<img class="corner-zuck" id="dad" src="' + url + '" />');
+	$('img#dad').hide();
+	$('img#dad').fadeIn(500);
+    }
+    function hideDad() {
+	$('img#dad').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -65,6 +74,12 @@ $(document).ready(function() {
 	    action: showWater,
 	    active: false,
 	    deactivate: hideWater
+	},
+	{
+	    keyword: 'dad',
+	    action: showDad,
+	    active: false,
+	    deactivate: hideDad
 	},
 	{
 	    keyword: 'nudes',
