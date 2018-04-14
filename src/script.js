@@ -67,6 +67,15 @@ $(document).ready(function() {
     function hideDad() {
 	$('img#dad').fadeOut(500);
     }
+    function showLove() {
+	const url = chrome.extension.getURL('loveyou.small.png');
+	$('body').prepend('<img class="corner-zuck" id="loveyou" src="' + url + '" />');
+	$('img#loveyou').hide();
+	$('img#loveyou').fadeIn(500);
+    }
+    function hideLove() {
+	$('img#loveyou').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -74,6 +83,12 @@ $(document).ready(function() {
 	    action: showWater,
 	    active: false,
 	    deactivate: hideWater
+	},
+	{
+	    keyword: 'i love you',
+	    action: showLove,
+	    active: false,
+	    deactivate: hideLove
 	},
 	{
 	    keyword: 'dad',
