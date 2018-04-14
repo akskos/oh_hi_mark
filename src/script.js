@@ -18,8 +18,8 @@ $(document).ready(function() {
 	$('img#drinking-zuck').fadeOut(500);
     }
     function showBasicZuck() {
-	const zucc = chrome.extension.getURL('zucc.png');
-	const eyes = chrome.extension.getURL('eyedots.png');
+	const zucc = chrome.extension.getURL('zucc.small.png');
+	const eyes = chrome.extension.getURL('eyes.small.png');
 	$('body').prepend('<img class="corner-zuck" id="zucks-eyes" src="' + eyes + '" />');
 	$('body').prepend('<img class="corner-zuck" id="basic-zuck" src="' + zucc + '" />');
 	$('img#basic-zuck').hide();
@@ -89,11 +89,6 @@ $(document).ready(function() {
 			return elementPosition <= scrollPosition + 400 && elementPosition >= scrollPosition;
 		    })[0]
 
-		if (chosenEvent) {
-		    console.log('element pos: ' + elementPosition);
-		}
-		console.log('scroll pos: ' + scrollPosition);
-
 		return {
 		    ev: chosenEvent,
 		    element: te
@@ -129,7 +124,7 @@ $(document).ready(function() {
 	setTimeout(function() {
 	    scanPageForKeywords();	
 	    scanLoop();
-	}, 10);
+	}, 40);
     }
 
     scanLoop();
