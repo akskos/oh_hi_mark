@@ -18,13 +18,18 @@ $(document).ready(function() {
 	$('img#drinking-zuck').fadeOut(500);
     }
     function showBasicZuck() {
-	const url = chrome.extension.getURL('zucc.png');
-	$('body').prepend('<img class="corner-zuck" id="basic-zuck" src="' + url + '" />');
+	const zucc = chrome.extension.getURL('zucc.png');
+	const eyes = chrome.extension.getURL('eyedots.png');
+	$('body').prepend('<img class="corner-zuck" id="zucks-eyes" src="' + eyes + '" />');
+	$('body').prepend('<img class="corner-zuck" id="basic-zuck" src="' + zucc + '" />');
 	$('img#basic-zuck').hide();
+	$('img#zucks-eyes').hide();
 	$('img#basic-zuck').fadeIn(500);
+	$('img#zucks-eyes').fadeIn(500);
     }
     function hideBasicZuck() {
 	$('img#basic-zuck').fadeOut(500);
+	$('img#zucks-eyes').fadeOut(500);
     }
 
     const events = [
@@ -52,7 +57,7 @@ $(document).ready(function() {
 	let funcs = [];
 	events.forEach(e => {
 	    if (e.active) {
-		funcs.append(() => {
+		funcs.push(() => {
 		    e.deactivate();
 		    e.active = false;
 		});
@@ -61,32 +66,63 @@ $(document).ready(function() {
 	return funcs;
     }
 
-    function fireEvents(element) {
-	for (let i = 0; i < events.length; i++) {
-	    const e = events[i];
-	    const text = element.text().toLowerCase();
-	    const position = element.offset().top;
-	    const scrollTop = $(window).scrollTop();
-	    const windowHeight = $(window).height();
-	    function positionSatisfied() {
-		return position <= scrollTop + windowHeight / 2;
-	    }
-	    if (!e.active && positionSatisfied() && text.indexOf(e.keyword) !== -1) {
-		getDeactivationFunctions().forEach((d) => {
-		   d(); 
-		});
-		e.action();
-		e.active = true;
-		return false;
-	    }
+    function fireEvents(textElements) {
+	let elements = [];
+	textElements.each(function() {
+	    elements.push({
+		text: $(this).text().toLowerCase(),
+		position: $(this).offset().top
+	    }); 
+	});
+	const o = elements
+	    .map(te => {
+		const text = te.text;	
+		const elementPosition = te.position;	
+		const scrollPosition = $(window).scrollTop();
+		const windowHeight = $(window).height();
+
+		const chosenEvent = events
+		    .filter(ev => {
+			return text.indexOf(ev.keyword) !== -1;
+		    })
+		    .filter(ev => {
+			return elementPosition <= scrollPosition + 400 && elementPosition >= scrollPosition;
+		    })[0]
+
+		if (chosenEvent) {
+		    console.log('element pos: ' + elementPosition);
+		}
+		console.log('scroll pos: ' + scrollPosition);
+
+		return {
+		    ev: chosenEvent,
+		    element: te
+		};
+
+	    })
+	    .filter(o => o.ev)
+	    .sort((o1, o2) => {
+		const te1Pos = o1.element.position;	
+		const te2Pos = o2.element.position;	
+		return te2Pos - te1Pos;
+	    })[0];
+	if (o && o.ev && !o.ev.active) {
+	    console.log(o.ev);
+	    getDeactivationFunctions().forEach(d => {
+		d();	
+	    }); 
+	    o.ev.action();
+	    o.ev.active = true;
 	}
+
     }
 
     function scanPageForKeywords() {
 	let textElements = $.merge($('p'), $(':header'));
-	textElements.each(function() {
-	    return fireEvents($(this));
-	});
+	fireEvents(textElements);
+	//textElements.each(function() {
+	//    return fireEvents($(this));
+	//});
     }
 
     function scanLoop() {
