@@ -1,29 +1,70 @@
 $(document).ready(function() {
-    function showSocialNetworkingZuck() {
-	const url = chrome.extension.getURL('jesse.small.png');
-	$('body').prepend('<img class="corner-zuck" id="social-networking" src="' + url + '" />');
+
+    function initImgs() {
+	const eyes = chrome.extension.getURL('eyes.small.png');
+	$('body').prepend('<img class="corner-zuck" id="zucks-eyes" src="' + eyes + '" />');
+	const networking = chrome.extension.getURL('jesse.small.png');
+	$('body').prepend('<img class="corner-zuck" id="social-networking" src="' + networking + '" />');
+	const drinking = chrome.extension.getURL('drinking.gif');
+	$('body').prepend('<img class="corner-zuck" id="drinking-zuck" src="' + drinking + '" />');
+	const zucc = chrome.extension.getURL('zucc.small.png');
+	$('body').prepend('<img class="corner-zuck" id="basic-zuck" src="' + zucc + '" />');
+	const water = chrome.extension.getURL('water.small.png');
+	$('body').prepend('<img class="corner-zuck" id="water" src="' + water + '" />');
+	const rofl = chrome.extension.getURL('rofl.small.png');
+	$('body').prepend('<img class="corner-zuck" id="rofl" src="' + rofl + '" />');
+	const thicc = chrome.extension.getURL('thicc.small.png');
+	$('body').prepend('<img class="corner-zuck" id="thicc" src="' + thicc + '" />');
+	const dad = chrome.extension.getURL('dad.small.png');
+	$('body').prepend('<img class="corner-zuck" id="dad" src="' + dad + '" />');
+	const loveyou = chrome.extension.getURL('loveyou.small.png');
+	$('body').prepend('<img class="corner-zuck" id="loveyou" src="' + loveyou + '" />');
+	const fb = chrome.extension.getURL('heart-eyes.small.png');
+	$('body').prepend('<img class="corner-zuck" id="fb" src="' + fb + '" />');
+	const stupid = chrome.extension.getURL('long_neck.small.png');
+	$('body').prepend('<img class="corner-zuck" id="stupid" src="' + stupid + '" />');
+	const smile = chrome.extension.getURL('smile.gif');
+	$('body').prepend('<img class="corner-zuck" id="smile" src="' + smile + '" />');
+	const fakenews = chrome.extension.getURL('fake_news.small.png');
+	$('body').prepend('<img class="corner-zuck" id="fakenews" src="' + fakenews + '" />');
+	const webcam = chrome.extension.getURL('webcam.small.png');
+	$('body').prepend('<img class="corner-zuck" id="webcam" src="' + webcam + '" />');
+	const illuminati = chrome.extension.getURL('illuminati.small.png');
+	$('body').prepend('<img class="corner-zuck" id="illuminati" src="' + illuminati + '" />');
+	const reptilian = chrome.extension.getURL('reptilian.png');
+	$('body').prepend('<img class="corner-zuck" id="reptilian" src="' + reptilian + '" />');
+
+	$('img#reptilian').hide();
+	$('img#webcam').hide();
 	$('img#social-networking').hide();
+	$('img#drinking-zuck').hide();
+	$('img#basic-zuck').hide();
+	$('img#zucks-eyes').hide();
+	$('img#water').hide();
+	$('img#rofl').hide();
+	$('img#thicc').hide();
+	$('img#dad').hide();
+	$('img#loveyou').hide();
+	$('img#stupid').hide();
+	$('img#fb').hide();
+	$('img#smile').hide();
+	$('img#fakenews').hide();
+	$('img#illuminati').hide();
+    }
+
+    function showSocialNetworkingZuck() {
 	$('img#social-networking').fadeIn(500);
     }
     function hideSocialNetworkingZuck() {
 	$('img#social-networking').fadeOut(500);
     }
     function showDrinkingZuck() {
-	const url = chrome.extension.getURL('drinking.gif');
-	$('body').prepend('<img class="corner-zuck" id="drinking-zuck" src="' + url + '" />');
-	$('img#drinking-zuck').hide();
 	$('img#drinking-zuck').fadeIn(500);
     }
     function hideDrinkingZuck() {
 	$('img#drinking-zuck').fadeOut(500);
     }
     function showBasicZuck() {
-	const zucc = chrome.extension.getURL('zucc.small.png');
-	const eyes = chrome.extension.getURL('eyes.small.png');
-	$('body').prepend('<img class="corner-zuck" id="zucks-eyes" src="' + eyes + '" />');
-	$('body').prepend('<img class="corner-zuck" id="basic-zuck" src="' + zucc + '" />');
-	$('img#basic-zuck').hide();
-	$('img#zucks-eyes').hide();
 	$('img#basic-zuck').fadeIn(500);
 	$('img#zucks-eyes').fadeIn(500);
     }
@@ -32,84 +73,54 @@ $(document).ready(function() {
 	$('img#zucks-eyes').fadeOut(500);
     }
     function showWater() {
-	const url = chrome.extension.getURL('water.small.png');
-	$('body').prepend('<img class="corner-zuck" id="water" src="' + url + '" />');
-	$('img#water').hide();
 	$('img#water').fadeIn(500);
     }
     function hideWater() {
 	$('img#water').fadeOut(500);
     }
     function showRofl() {
-	const url = chrome.extension.getURL('rofl.small.png');
-	$('body').prepend('<img class="corner-zuck" id="rofl" src="' + url + '" />');
-	$('img#rofl').hide();
 	$('img#rofl').fadeIn(500);
     }
     function hideRofl() {
 	$('img#rofl').fadeOut(500);
     }
     function showThicc() {
-	const url = chrome.extension.getURL('thicc.small.png');
-	$('body').prepend('<img class="corner-zuck" id="thicc" src="' + url + '" />');
-	$('img#thicc').hide();
 	$('img#thicc').fadeIn(500);
     }
     function hideThicc() {
 	$('img#thicc').fadeOut(500);
     }
     function showDad() {
-	const url = chrome.extension.getURL('dad.small.png');
-	$('body').prepend('<img class="corner-zuck" id="dad" src="' + url + '" />');
-	$('img#dad').hide();
 	$('img#dad').fadeIn(500);
     }
     function hideDad() {
 	$('img#dad').fadeOut(500);
     }
     function showLove() {
-	const url = chrome.extension.getURL('loveyou.small.png');
-	$('body').prepend('<img class="corner-zuck" id="loveyou" src="' + url + '" />');
-	$('img#loveyou').hide();
 	$('img#loveyou').fadeIn(500);
     }
     function hideLove() {
 	$('img#loveyou').fadeOut(500);
     }
     function showFb() {
-	const url = chrome.extension.getURL('heart-eyes.small.png');
-	$('body').prepend('<img class="corner-zuck" id="fb" src="' + url + '" />');
-	$('img#fb').hide();
 	$('img#fb').fadeIn(500);
     }
     function hideFb() {
 	$('img#fb').fadeOut(500);
     }
     function showStupid() {
-	const url = chrome.extension.getURL('long_neck.small.png');
-	$('body').prepend('<img class="corner-zuck" id="stupid" src="' + url + '" />');
-	$('img#stupid').hide();
 	$('img#stupid').fadeIn(500);
     }
     function hideStupid() {
 	$('img#stupid').fadeOut(500);
     }
     function showSmile() {
-	const url = chrome.extension.getURL('smile.gif');
-	$('body').prepend('<img class="corner-zuck" id="smile" src="' + url + '" />');
-	$('img#smile').hide();
 	$('img#smile').fadeIn(500);
     }
     function hideSmile() {
 	$('img#smile').fadeOut(500);
     }
     function showFakeNews() {
-	const url = chrome.extension.getURL('fake_news.small.png');
-	const eyes = chrome.extension.getURL('eyes.small.png');
-	$('body').prepend('<img class="corner-zuck" id="zucks-eyes" src="' + eyes + '" />');
-	$('body').prepend('<img class="corner-zuck" id="fakenews" src="' + url + '" />');
-	$('img#fakenews').hide();
-	$('img#zucks-eyes').hide();
 	$('img#fakenews').fadeIn(500);
 	$('img#zucks-eyes').fadeIn(500);
     }
@@ -118,18 +129,24 @@ $(document).ready(function() {
 	$('img#zucks-eyes').fadeOut(500);
     }
     function showWebcam() {
-	const url = chrome.extension.getURL('webcam.small.png');
-	const eyes = chrome.extension.getURL('eyes.small.png');
-	$('body').prepend('<img class="corner-zuck" id="zucks-eyes" src="' + eyes + '" />');
-	$('body').prepend('<img class="corner-zuck" id="webcam" src="' + url + '" />');
-	$('img#webcam').hide();
-	$('img#zucks-eyes').hide();
 	$('img#webcam').fadeIn(500);
 	$('img#zucks-eyes').fadeIn(500);
     }
     function hideWebcam() {
 	$('img#webcam').fadeOut(500);
 	$('img#zucks-eyes').fadeOut(500);
+    }
+    function showIlluminati() {
+	$('img#illuminati').fadeIn(500);
+    }
+    function hideIlluminati() {
+	$('img#illuminati').fadeOut(500);
+    }
+    function showReptilian() {
+	$('img#reptilian').fadeIn(500);
+    }
+    function hideReptilian() {
+	$('img#reptilian').fadeOut(500);
     }
 
     const events = [
@@ -138,6 +155,18 @@ $(document).ready(function() {
 	    action: showWater,
 	    active: false,
 	    deactivate: hideWater
+	},
+	{
+	    keyword: 'lizard',
+	    action: showReptilian,
+	    active: false,
+	    deactivate: hideReptilian
+	},
+	{
+	    keyword: 'illuminati',
+	    action: showIlluminati,
+	    active: false,
+	    deactivate: hideIlluminati
 	},
 	{
 	    keyword: 'webcam',
@@ -158,7 +187,7 @@ $(document).ready(function() {
 	    deactivate: hideSmile
 	},
 	{
-	    keyword: 'stupid hack',
+	    keyword: 'long',
 	    action: showStupid,
 	    active: false,
 	    deactivate: hideStupid
@@ -188,7 +217,7 @@ $(document).ready(function() {
 	    deactivate: hideThicc
 	},
 	{
-	    keyword: 'rofl',
+	    keyword: 'haha',
 	    action: showRofl,
 	    active: false,
 	    deactivate: hideRofl
@@ -307,5 +336,6 @@ $(document).ready(function() {
 	$('img#zucks-eyes').css('bottom', bottom);
     });
 
+    initImgs();
     scanLoop();
 });
