@@ -330,12 +330,28 @@ $(document).ready(function() {
     window.addEventListener('mousemove', (e) => {
 	const screenWidth = $(window).width();
 	const screenHeight = $(window).height();
-	const right = ((screenWidth - e.screenX) / screenWidth) * 7;
+	let horizontal = ((screenWidth - e.screenX) / screenWidth) * 7;
+	let rightOrLeft = 'right';
+	if ($('img#loveyou').css('right') === 'auto') {
+	    rightOrLeft = 'left';
+	    horizontal = 7 - horizontal;
+	}
 	const bottom = ((screenHeight - e.screenY) / screenHeight) * 4;
-	$('img#zucks-eyes').css('right', right);
+	$('img#zucks-eyes').css(rightOrLeft, horizontal);
 	$('img#zucks-eyes').css('bottom', bottom);
     });
 
     initImgs();
+    $('.corner-zuck').on('mouseover', () => {
+	const rightVal = $('img#loveyou').css('right');
+	if (rightVal !== 'auto') {
+	    $('.corner-zuck').css('right', 'auto');
+	    $('.corner-zuck').css('left', '0');
+	} else {
+	    $('.corner-zuck').css('right', '0');
+	    $('.corner-zuck').css('left', 'auto');
+	}
+    });
+
     scanLoop();
 });
