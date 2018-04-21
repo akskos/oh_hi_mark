@@ -9,6 +9,11 @@ img.corner-zuck {
     width: 250px;
 }
 
+img.left-corner-zuck {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 #illuminati {
     -webkit-animation: spin 1.9s infinite linear;
     -moz-animation: spin 1.9s infinite linear;
