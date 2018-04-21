@@ -1,3 +1,5 @@
+let currentCorner = 0;
+
 $(document).ready(function() {
 
     function initImgs() {
@@ -378,24 +380,51 @@ $(document).ready(function() {
 	const screenHeight = $(window).height();
 	let horizontal = ((screenWidth - e.screenX) / screenWidth) * 7;
 	let rightOrLeft = 'right';
+	let topOrBottom = 'bottom';
 	if ($('img#loveyou').css('right') === 'auto') {
 	    rightOrLeft = 'left';
 	    horizontal = 7 - horizontal;
 	}
-	const bottom = ((screenHeight - e.screenY) / screenHeight) * 4;
+	let vertical = ((screenHeight - e.screenY) / screenHeight) * 4;
+	if (currentCorner == 2 || currentCorner == 3) {
+	    vertical = 4 - vertical;
+	    topOrBottom = 'top';
+	}
 	$('img#zucks-eyes').css(rightOrLeft, horizontal);
-	$('img#zucks-eyes').css('bottom', bottom);
+	$('img#zucks-eyes').css(topOrBottom, vertical);
     });
 
     initImgs();
     $('.corner-zuck').on('mouseover', () => {
 	const rightVal = $('img#loveyou').css('right');
-	if (rightVal !== 'auto') {
+	if (currentCorner == 0) {
 	    $('.corner-zuck').css('right', 'auto');
 	    $('.corner-zuck').css('left', '0');
-	} else {
+	    $('.corner-zuck').css('top', 'auto');
+	    $('.corner-zuck').css('bottom', '0');
+	    $('.corner-zuck').removeClass('upside-down-zuck');
+	    currentCorner = 1;
+	} else if (currentCorner == 1) {
+	    $('.corner-zuck').css('right', 'auto');
+	    $('.corner-zuck').css('left', '0');
+	    $('.corner-zuck').css('top', '0');
+	    $('.corner-zuck').css('bottom', 'auto');
+	    $('.corner-zuck').addClass('upside-down-zuck');
+	    currentCorner = 2;
+	} else if (currentCorner == 2) {
 	    $('.corner-zuck').css('right', '0');
 	    $('.corner-zuck').css('left', 'auto');
+	    $('.corner-zuck').css('top', '0');
+	    $('.corner-zuck').css('bottom', 'auto');
+	    $('.corner-zuck').addClass('upside-down-zuck');
+	    currentCorner = 3;
+	} else if (currentCorner == 3) {
+	    $('.corner-zuck').css('right', '0');
+	    $('.corner-zuck').css('left', 'auto');
+	    $('.corner-zuck').css('top', 'auto');
+	    $('.corner-zuck').css('bottom', '0');
+	    $('.corner-zuck').removeClass('upside-down-zuck');
+	    currentCorner = 0;
 	}
     });
 
