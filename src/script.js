@@ -37,6 +37,8 @@ $(document).ready(function() {
 	$('body').prepend('<img class="corner-zuck" id="hiding" src="' + hiding + '" />');
 	const terminate = chrome.extension.getURL('terminate.gif');
 	$('body').prepend('<img class="corner-zuck" id="terminate" src="' + terminate + '" />');
+	const theroom = chrome.extension.getURL('ohhimark.png');
+	$('body').prepend('<img class="corner-zuck" id="theroom" src="' + theroom + '" />');
 
 	$('img#reptilian').hide();
 	$('img#webcam').hide();
@@ -57,6 +59,7 @@ $(document).ready(function() {
 	$('img#hiding').hide();
 	$('img#reptile').hide();
 	$('img#terminate').hide();
+	$('img#theroom').hide();
     }
 
     function showSocialNetworkingZuck() {
@@ -167,6 +170,12 @@ $(document).ready(function() {
     function hideTerminate() {
 	$('img#terminate').fadeOut(500);
     }
+    function showRoom() {
+	$('img#theroom').fadeIn(500);
+    }
+    function hideRoom() {
+	$('img#theroom').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -180,6 +189,12 @@ $(document).ready(function() {
 	    action: showReptilian,
 	    active: false,
 	    deactivate: hideReptilian
+	},
+	{
+	    keyword: 'the room',
+	    action: showRoom,
+	    active: false,
+	    deactivate: hideRoom
 	},
 	{
 	    keyword: 'terminat',
