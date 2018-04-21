@@ -35,6 +35,8 @@ $(document).ready(function() {
 	$('body').prepend('<img class="corner-zuck" id="reptilian" src="' + reptilian + '" />');
 	const hiding = chrome.extension.getURL('hiding.gif');
 	$('body').prepend('<img class="corner-zuck" id="hiding" src="' + hiding + '" />');
+	const terminate = chrome.extension.getURL('terminate.gif');
+	$('body').prepend('<img class="corner-zuck" id="terminate" src="' + terminate + '" />');
 
 	$('img#reptilian').hide();
 	$('img#webcam').hide();
@@ -53,6 +55,8 @@ $(document).ready(function() {
 	$('img#fakenews').hide();
 	$('img#illuminati').hide();
 	$('img#hiding').hide();
+	$('img#reptile').hide();
+	$('img#terminate').hide();
     }
 
     function showSocialNetworkingZuck() {
@@ -157,6 +161,12 @@ $(document).ready(function() {
     function hideHiding() {
 	$('img#hiding').fadeOut(500);
     }
+    function showTerminate() {
+	$('img#terminate').fadeIn(500);
+    }
+    function hideTerminate() {
+	$('img#terminate').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -170,6 +180,12 @@ $(document).ready(function() {
 	    action: showReptilian,
 	    active: false,
 	    deactivate: hideReptilian
+	},
+	{
+	    keyword: 'terminat',
+	    action: showTerminate,
+	    active: false,
+	    deactivate: hideTerminate
 	},
 	{
 	    keyword: 'porn',
