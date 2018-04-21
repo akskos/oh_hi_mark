@@ -393,11 +393,9 @@ $(document).ready(function() {
 	if (rightVal !== 'auto') {
 	    $('.corner-zuck').css('right', 'auto');
 	    $('.corner-zuck').css('left', '0');
-	    $('.corner-zuck').addClass('left-corner-zuck');
 	} else {
 	    $('.corner-zuck').css('right', '0');
 	    $('.corner-zuck').css('left', 'auto');
-	    $('.corner-zuck').removeClass('left-corner-zuck');
 	}
     });
 
