@@ -33,6 +33,8 @@ $(document).ready(function() {
 	$('body').prepend('<img class="corner-zuck" id="illuminati" src="' + illuminati + '" />');
 	const reptilian = chrome.extension.getURL('reptilian.png');
 	$('body').prepend('<img class="corner-zuck" id="reptilian" src="' + reptilian + '" />');
+	const hiding = chrome.extension.getURL('hiding.gif');
+	$('body').prepend('<img class="corner-zuck" id="hiding" src="' + hiding + '" />');
 
 	$('img#reptilian').hide();
 	$('img#webcam').hide();
@@ -50,6 +52,7 @@ $(document).ready(function() {
 	$('img#smile').hide();
 	$('img#fakenews').hide();
 	$('img#illuminati').hide();
+	$('img#hiding').hide();
     }
 
     function showSocialNetworkingZuck() {
@@ -148,6 +151,12 @@ $(document).ready(function() {
     function hideReptilian() {
 	$('img#reptilian').fadeOut(500);
     }
+    function showHiding() {
+	$('img#hiding').fadeIn(500);
+    }
+    function hideHiding() {
+	$('img#hiding').fadeOut(500);
+    }
 
     const events = [
 	{
@@ -161,6 +170,12 @@ $(document).ready(function() {
 	    action: showReptilian,
 	    active: false,
 	    deactivate: hideReptilian
+	},
+	{
+	    keyword: 'porn',
+	    action: showHiding,
+	    active: false,
+	    deactivate: hideHiding
 	},
 	{
 	    keyword: 'illuminati',
