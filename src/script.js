@@ -31,7 +31,7 @@ $(document).ready(function() {
 	$('body').prepend('<img class="corner-zuck" id="webcam" src="' + webcam + '" />');
 	const illuminati = chrome.extension.getURL('illuminati.small.png');
 	$('body').prepend('<img class="corner-zuck" id="illuminati" src="' + illuminati + '" />');
-	const reptilian = chrome.extension.getURL('reptilian.png');
+	const reptilian = chrome.extension.getURL('liz-zucc.gif');
 	$('body').prepend('<img class="corner-zuck" id="reptilian" src="' + reptilian + '" />');
 	const hiding = chrome.extension.getURL('hiding.gif');
 	$('body').prepend('<img class="corner-zuck" id="hiding" src="' + hiding + '" />');
